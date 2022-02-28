@@ -1,6 +1,7 @@
 package sandbox.fis.api.entity.channel;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sandbox.fis.api.entity.BaseTimeEntity;
@@ -19,4 +20,9 @@ public class Channel extends BaseTimeEntity {
 
     @Column(length = 90, nullable = false)
     private String channelName;
+
+    @Builder
+    public Channel(String channelName) {
+        this.channelName = channelName;
+    }
 }
