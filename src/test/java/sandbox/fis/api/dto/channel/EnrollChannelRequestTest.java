@@ -32,47 +32,47 @@ class EnrollChannelRequestTest {
     @MethodSource("blankValue")
     @DisplayName("채널명에 공백 또는 null이 입력될 경우 검증이 통과되지 않음")
     void EnrollChannelRequest_channelName_blank_or_null_then_EnrollChannelRequest_channelName_fail(String channelName) {
-        // givne
-        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
+        // given
+        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(enrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isFalse();
     }
 
-    static Stream<String> overLengthValue() {
+    static Stream<String> overLengthChannelName() {
         return Stream.of("채널명30자이상채널명30자이상채널명30자이상채널명30자이");
     }
 
     @ParameterizedTest(name = "{index} - input channelName = {0}")
-    @MethodSource("overLengthValue")
-    @DisplayName("채널명이 30자 이상 입력될 경우 검증이 통과되지 않음")
+    @MethodSource("overLengthChannelName")
+    @DisplayName("채널명이 30자 초과 입력될 경우 검증이 통과되지 않음")
     void EnrollChannelRequest_channelName_length_over_then_EnrollChannelRequest_channelName_fail(String channelName) {
         // given
-        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
+        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(enrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isFalse();
     }
 
-    static Stream<String> validValue() {
+    static Stream<String> validChannelName() {
         return Stream.of("채널명", "채널입니다", "채널채널");
     }
 
     @ParameterizedTest(name = "{index} - input channelName = {0}")
-    @MethodSource("validValue")
+    @MethodSource("validChannelName")
     @DisplayName("채널명에 유효한 값이 입력될 경우 검증이 통과됨")
     void EnrollChannelRequest_channelName_valid_then_EnrollChannelRequest_channelName_success(String channelName) {
         // given
-        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
+        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(enrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isTrue();
