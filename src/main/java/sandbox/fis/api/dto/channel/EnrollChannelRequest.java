@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateChannelRequest {
+public class EnrollChannelRequest {
 
     @NotBlank
     @Length(max = 30)

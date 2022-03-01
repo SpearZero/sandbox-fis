@@ -14,8 +14,8 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-@DisplayName("CreateChannelRequest 테스트")
-class CreateChannelRequestTest {
+@DisplayName("EnrollChannelRequest 테스트")
+class EnrollChannelRequestTest {
 
     static Validator validator;
 
@@ -31,12 +31,12 @@ class CreateChannelRequestTest {
     @ParameterizedTest(name = "{index} - input channelName = {0}")
     @MethodSource("blankValue")
     @DisplayName("채널명에 공백 또는 null이 입력될 경우 검증이 통과되지 않음")
-    void CreateChannelRequest_channelName_blank_or_null_then_CreateChannelRequest_channelName_fail(String channelName) {
+    void EnrollChannelRequest_channelName_blank_or_null_then_EnrollChannelRequest_channelName_fail(String channelName) {
         // givne
-        CreateChannelRequest createChannelRequest = new CreateChannelRequest(channelName);
+        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<CreateChannelRequest>> validate = validator.validate(createChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isFalse();
@@ -49,12 +49,12 @@ class CreateChannelRequestTest {
     @ParameterizedTest(name = "{index} - input channelName = {0}")
     @MethodSource("overLengthValue")
     @DisplayName("채널명이 30자 이상 입력될 경우 검증이 통과되지 않음")
-    void CreateChannelRequest_channelName_length_over_then_CreateChannelRequest_channelName_fail(String channelName) {
+    void EnrollChannelRequest_channelName_length_over_then_EnrollChannelRequest_channelName_fail(String channelName) {
         // given
-        CreateChannelRequest createChannelRequest = new CreateChannelRequest(channelName);
+        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<CreateChannelRequest>> validate = validator.validate(createChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isFalse();
@@ -67,12 +67,12 @@ class CreateChannelRequestTest {
     @ParameterizedTest(name = "{index} - input channelName = {0}")
     @MethodSource("validValue")
     @DisplayName("채널명에 유효한 값이 입력될 경우 검증이 통과됨")
-    void CreateChannelRequest_channelName_valid_then_CreateChannelRequest_channelName_success(String channelName) {
+    void EnrollChannelRequest_channelName_valid_then_EnrollChannelRequest_channelName_success(String channelName) {
         // given
-        CreateChannelRequest createChannelRequest = new CreateChannelRequest(channelName);
+        EnrollChannelRequest EnrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
-        Set<ConstraintViolation<CreateChannelRequest>> validate = validator.validate(createChannelRequest);
+        Set<ConstraintViolation<EnrollChannelRequest>> validate = validator.validate(EnrollChannelRequest);
 
         // then
         assertThat(validate.isEmpty()).isTrue();

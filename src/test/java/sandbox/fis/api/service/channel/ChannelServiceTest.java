@@ -8,8 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
-import sandbox.fis.api.dto.channel.CreateChannelRequest;
-import sandbox.fis.api.dto.channel.CreateChannelResponse;
+import sandbox.fis.api.dto.channel.EnrollChannelRequest;
+import sandbox.fis.api.dto.channel.EnrollChannelResponse;
 import sandbox.fis.api.entity.channel.Channel;
 import sandbox.fis.api.repository.channel.ChannelRepository;
 
@@ -38,11 +38,11 @@ class ChannelServiceTest {
     @DisplayName("채널 등록시 등록 성공")
     void save_channel_then_save_channel_success() {
         // given
-        CreateChannelRequest createChannelRequest = new CreateChannelRequest(channelName);
+        EnrollChannelRequest createChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
         when(channelRepository.save(any(Channel.class))).thenReturn(channel);
-        CreateChannelResponse createChannelResponse = channelService.create(createChannelRequest);
+        EnrollChannelResponse createChannelResponse = channelService.enroll(createChannelRequest);
 
         // then
         assertThat(createChannelResponse.getChannel_id()).isEqualTo(channelId);

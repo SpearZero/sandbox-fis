@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CreateChannelResponse {
+public class EnrollChannelResponse {
 
     private Long channel_id;
 }
