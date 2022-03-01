@@ -15,6 +15,7 @@ public class ChannelService {
 
     public EnrollChannelResponse enroll(EnrollChannelRequest request) {
         Channel channel = channelRepository.save(request.toEntity());
+
         return new EnrollChannelResponse(channel.getId());
     }
 }

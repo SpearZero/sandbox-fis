@@ -36,13 +36,13 @@ class ChannelServiceTest {
     
     @Test
     @DisplayName("채널 등록시 등록 성공")
-    void save_channel_then_save_channel_success() {
+    void enroll_channel_then_enroll_channel_success() {
         // given
-        EnrollChannelRequest createChannelRequest = new EnrollChannelRequest(channelName);
+        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName);
 
         // when
         when(channelRepository.save(any(Channel.class))).thenReturn(channel);
-        EnrollChannelResponse createChannelResponse = channelService.enroll(createChannelRequest);
+        EnrollChannelResponse createChannelResponse = channelService.enroll(enrollChannelRequest);
 
         // then
         assertThat(createChannelResponse.getChannel_id()).isEqualTo(channelId);
