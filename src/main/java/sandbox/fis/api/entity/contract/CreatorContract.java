@@ -1,6 +1,7 @@
 package sandbox.fis.api.entity.contract;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sandbox.fis.api.entity.BaseTimeEntity;
@@ -28,4 +29,11 @@ public class CreatorContract extends BaseTimeEntity {
 
     @Column(nullable = false)
     private Integer creatorRs;
+
+    @Builder
+    public CreatorContract(Contract contract, Creator creator, Integer creatorRs) {
+        this.contract = contract;
+        this.creator = creator;
+        this.creatorRs = creatorRs;
+    }
 }
