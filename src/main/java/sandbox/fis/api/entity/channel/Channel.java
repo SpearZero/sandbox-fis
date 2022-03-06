@@ -21,8 +21,12 @@ public class Channel extends BaseTimeEntity {
     @Column(length = 90, nullable = false)
     private String channelName;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @Builder
-    public Channel(String channelName) {
+    public Channel(String channelName, String email) {
         this.channelName = channelName;
+        this.email = email;
     }
 }

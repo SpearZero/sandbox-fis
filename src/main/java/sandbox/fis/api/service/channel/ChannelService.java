@@ -14,6 +14,10 @@ public class ChannelService {
     private final ChannelRepository channelRepository;
 
     public EnrollChannelResponse enroll(EnrollChannelRequest request) {
+        if (channelRepository.existsByEmail(request.getChannel_email())) {
+            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+        }
+
         Channel channel = channelRepository.save(request.toEntity());
 
         return new EnrollChannelResponse(channel.getId());

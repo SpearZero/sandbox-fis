@@ -28,12 +28,13 @@ class ChannelControllerTest {
 
     final Long channelId = 1L;
     final String channelName = "channel";
+    final String channelEmail = "email@email.com";
     
     @Test
     @DisplayName("채널 등록시 성공 응답 반환")
     void enroll_channel_success_then_return_success_response() throws Exception {
         // given
-        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName);
+        EnrollChannelRequest enrollChannelRequest = new EnrollChannelRequest(channelName, channelEmail);
         String body = objectMapper.writeValueAsString(enrollChannelRequest);
 
         // when

@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import sandbox.fis.api.entity.channel.Channel;
 
 public interface ChannelRepository extends JpaRepository<Channel, Long> {
-
+    Boolean existsByEmail(String email);
 }
