@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContractChannelRequest {
+public class ContractCompanyRequest {
 
     @NotNull
     @Min(value = 1)

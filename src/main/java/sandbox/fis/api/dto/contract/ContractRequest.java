@@ -13,7 +13,7 @@ import java.util.List;
 public class ContractRequest {
 
     @Valid
-    ContractChannelRequest company;
+    ContractCompanyRequest company;
 
     @Valid
     List<ContractCreatorRequest> creators;
