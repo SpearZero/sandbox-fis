@@ -14,7 +14,9 @@ public class CreatorService {
     private final CreatorRepository creatorRepository;
 
     public EnrollCreatorResponse enroll(EnrollCreatorRequest request) {
-        if (creatorRepository.existsByEmail(request.getCreator_email())) throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+        if (creatorRepository.existsByEmail(request.getCreator_email())) {
+            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+        }
 
         Creator creator = creatorRepository.save(request.toEntity());
 
