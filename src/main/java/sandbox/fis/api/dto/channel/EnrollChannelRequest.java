@@ -23,6 +23,6 @@ public class EnrollChannelRequest {
     private String channel_email;
 
     public Channel toEntity() {
-        return Channel.builder().channelName(this.channel_name).build();
+        return Channel.builder().channelName(this.channel_name).email(channel_email).build();
     }
 }
