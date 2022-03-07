@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CreatorAmountDto {
+public class PerCreatorAmountDto {
 
-    // 크리에이터들의 금액 합계
+    // 크리에이터 금액 합계
     private String amount;
 
     // 월

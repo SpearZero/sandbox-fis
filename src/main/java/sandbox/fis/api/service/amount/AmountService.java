@@ -7,6 +7,8 @@ import sandbox.fis.api.dto.amount.AmountRequest;
 import sandbox.fis.api.dto.amount.AmountResponse;
 import sandbox.fis.api.dto.amount.list.CreatorAmountDto;
 import sandbox.fis.api.dto.amount.list.CreatorAmountsDto;
+import sandbox.fis.api.dto.amount.list.PerCreatorAmountDto;
+import sandbox.fis.api.dto.amount.list.PerCreatorAmountsDto;
 import sandbox.fis.api.entity.amount.Amount;
 import sandbox.fis.api.entity.amount.CompanyAmount;
 import sandbox.fis.api.entity.amount.CreatorAmount;
@@ -36,6 +38,7 @@ public class AmountService {
     private final CreatorAmountRepository creatorAmountRepository;
     private final AmountCalculator amountCalculator;
 
+    // 계약서 저장
     public AmountResponse saveAmount(AmountRequest amountRequest) {
 
         // 계약서 조회
@@ -71,15 +74,5 @@ public class AmountService {
         }
 
         return new AmountResponse(contract.getId());
-    }
-
-    public CreatorAmountsDto getCreatorAmounts(Long contractId, String startDate, String endDate) {
-        List<CreatorAmountDto> creatorAmounts = creatorAmountRepository.findCreatorAmounts(contractId, startDate, endDate)
-                .stream().map(creatorAmount -> new CreatorAmountDto(creatorAmount.get("amount", String.class),
-                        creatorAmount.get("month", String.class))).collect(Collectors.toList());
-
-        CreatorAmountsDto creatorAmountsDto = new CreatorAmountsDto(contractId, creatorAmounts);
-
-        return creatorAmountsDto;
     }
 }
