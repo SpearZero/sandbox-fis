@@ -8,6 +8,8 @@ import sandbox.fis.api.entity.BaseTimeEntity;
 import sandbox.fis.api.entity.channel.Channel;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,6 +24,9 @@ public class Contract extends BaseTimeEntity {
     @OneToOne
     @JoinColumn(name = "channel_id")
     private Channel channel;
+
+    @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
+    private List<CreatorContract> creatorsContract = new ArrayList<>();
 
     @Column(nullable = false)
     private Integer companyRs;

@@ -19,11 +19,11 @@ public class CreatorContract extends BaseTimeEntity {
     @Column(name = "creator_contract_id")
     private Long id;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contract_id")
     private Contract contract;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "creator_id")
     private Creator creator;
 
