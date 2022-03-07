@@ -13,6 +13,7 @@ public class CreatorService {
 
     private final CreatorRepository creatorRepository;
 
+    // 크리에이터 등록
     public EnrollCreatorResponse enroll(EnrollCreatorRequest request) {
         if (creatorRepository.existsByEmail(request.getCreator_email())) {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");

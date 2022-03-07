@@ -20,6 +20,7 @@ public class CreatorController {
 
     private final CreatorService creatorService;
 
+    // 크리에이터 등록
     @PostMapping
     public ResponseEntity<EnrollCreatorResponse> enroll(@Valid @RequestBody EnrollCreatorRequest enrollCreatorRequest) {
         return new ResponseEntity<>(creatorService.enroll(enrollCreatorRequest), HttpStatus.CREATED);
