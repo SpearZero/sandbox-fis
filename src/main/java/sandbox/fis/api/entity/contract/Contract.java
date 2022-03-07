@@ -22,7 +22,7 @@ public class Contract extends BaseTimeEntity {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "channel_id")
+    @JoinColumn(name = "channel_id", nullable = false)
     private Channel channel;
 
     @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)

@@ -22,11 +22,11 @@ public class CompanyAmount extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contract_id")
+    @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "amount_id")
+    @JoinColumn(name = "amount_id", nullable = false)
     private Amount allAmount;
 
     @Column(nullable = false, precision = 22, scale = 7)
