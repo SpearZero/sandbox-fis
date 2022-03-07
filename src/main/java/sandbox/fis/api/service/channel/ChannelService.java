@@ -13,6 +13,7 @@ public class ChannelService {
 
     private final ChannelRepository channelRepository;
 
+    // 채널 등록
     public EnrollChannelResponse enroll(EnrollChannelRequest request) {
         if (channelRepository.existsByEmail(request.getChannel_email())) {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");

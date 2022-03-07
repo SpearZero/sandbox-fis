@@ -32,6 +32,7 @@ public class ContractService {
 
     private final RsCalculator rsCalculator;
 
+    // 계약서 등록
     public ContractResponse makeContract(ContractRequest contractRequest) {
         // 계약서 요청값이 존재하는지 검증
         existsByContract(contractRequest);

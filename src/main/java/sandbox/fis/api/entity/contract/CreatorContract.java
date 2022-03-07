@@ -20,11 +20,11 @@ public class CreatorContract extends BaseTimeEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contract_id")
+    @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "creator_id")
+    @JoinColumn(name = "creator_id", nullable = false)
     private Creator creator;
 
     @Column(nullable = false)

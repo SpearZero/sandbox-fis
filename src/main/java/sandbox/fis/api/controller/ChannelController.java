@@ -20,6 +20,7 @@ public class ChannelController {
 
     private final ChannelService channelService;
 
+    // 채널 등록
     @PostMapping
     public ResponseEntity<EnrollChannelResponse> enroll(@Valid @RequestBody EnrollChannelRequest enrollChannelRequest) {
         return new ResponseEntity<>(channelService.enroll(enrollChannelRequest), HttpStatus.CREATED);

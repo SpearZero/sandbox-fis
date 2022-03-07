@@ -20,6 +20,7 @@ public class ContractController {
 
     private final ContractService contractService;
 
+    // 계약서 등록
     @PostMapping
     public ResponseEntity<ContractResponse> makeContract(@Valid @RequestBody ContractRequest contractRequest) {
         return new ResponseEntity<>(contractService.makeContract(contractRequest), HttpStatus.CREATED);

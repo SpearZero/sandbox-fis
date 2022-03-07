@@ -38,7 +38,7 @@ public class AmountService {
     private final CreatorAmountRepository creatorAmountRepository;
     private final AmountCalculator amountCalculator;
 
-    // 계약서 저장
+    // 정산금액 등록
     public AmountResponse saveAmount(AmountRequest amountRequest) {
 
         // 계약서 조회
