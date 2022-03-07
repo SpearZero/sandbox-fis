@@ -132,6 +132,9 @@ class ContractServiceTest {
         // given
         ContractRequest contractRequest = new ContractRequest(invalidContractCompanyRequest, invalidContractCreatorsRequest);
 
+        // when
+        when(rsCalculator.rsContractSumValid(any(Integer.class), any(Integer.class))).thenReturn(false);
+
         // when, then
         assertThrows(IllegalArgumentException.class, () -> contractService.makeContract(contractRequest));
     }
@@ -141,6 +144,10 @@ class ContractServiceTest {
     void ContractRequest_creators_rs_sum_not_valid_then_throw_IllegalArgumentException() {
         // given
         ContractRequest contractRequest = new ContractRequest(contractCompanyRequest, invalidContractCreatorsRequest);
+
+        // when
+        when(rsCalculator.rsContractSumValid(any(Integer.class), any(Integer.class))).thenReturn(true);
+        when(rsCalculator.rsContractCreatorsSumValid(any(List.class))).thenReturn(false);
 
         // when, then
         assertThrows(IllegalArgumentException.class, () -> contractService.makeContract(contractRequest));

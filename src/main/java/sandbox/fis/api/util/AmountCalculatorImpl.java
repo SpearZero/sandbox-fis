@@ -1,8 +1,11 @@
 package sandbox.fis.api.util;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@Component
 public class AmountCalculatorImpl implements AmountCalculator {
 
     @Override
