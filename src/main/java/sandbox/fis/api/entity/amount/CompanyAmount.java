@@ -29,7 +29,7 @@ public class CompanyAmount extends BaseTimeEntity {
     @JoinColumn(name = "amount_id")
     private Amount allAmount;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 22, scale = 7)
     private BigDecimal amount;
 
     @Column(nullable = false)

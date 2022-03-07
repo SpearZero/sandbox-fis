@@ -25,7 +25,7 @@ public class Amount extends BaseTimeEntity {
     @JoinColumn(name = "contract_id")
     private Contract contract;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 22, scale = 7)
     private BigDecimal amount;
 
     @Column(nullable = false)
