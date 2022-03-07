@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sandbox.fis.api.dto.amount.AmountRequest;
 import sandbox.fis.api.dto.amount.AmountResponse;
+import sandbox.fis.api.dto.amount.list.CreatorAmountDto;
+import sandbox.fis.api.dto.amount.list.CreatorAmountsDto;
 import sandbox.fis.api.entity.amount.Amount;
 import sandbox.fis.api.entity.amount.CompanyAmount;
 import sandbox.fis.api.entity.amount.CreatorAmount;
@@ -17,9 +19,11 @@ import sandbox.fis.api.repository.amount.CreatorAmountRepository;
 import sandbox.fis.api.repository.contract.ContractRepository;
 import sandbox.fis.api.util.AmountCalculator;
 
+import javax.persistence.Tuple;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @RequiredArgsConstructor
@@ -67,5 +71,15 @@ public class AmountService {
         }
 
         return new AmountResponse(contract.getId());
+    }
+
+    public CreatorAmountsDto getCreatorAmounts(Long contractId, String startDate, String endDate) {
+        List<CreatorAmountDto> creatorAmounts = creatorAmountRepository.findCreatorAmounts(contractId, startDate, endDate)
+                .stream().map(creatorAmount -> new CreatorAmountDto(creatorAmount.get("amount", String.class),
+                        creatorAmount.get("month", String.class))).collect(Collectors.toList());
+
+        CreatorAmountsDto creatorAmountsDto = new CreatorAmountsDto(contractId, creatorAmounts);
+
+        return creatorAmountsDto;
     }
 }
