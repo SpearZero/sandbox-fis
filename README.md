@@ -1,5 +1,10 @@
 ## SandBox FIS
 
+### 사용 기술
+- Java11
+- MariaDB
+- JPA
+
 ### API
 
 ### 1. 채널 등록
@@ -127,11 +132,11 @@ contract_id | Long | 계약서ID |
 
 요청
 
-|필드명|타입|설명|
-------|-----|----|
-contract_id | Long | 계약서ID |
-day | String | 정산날짜 |
-amount | BigDecimal | 정산금액 |
+|필드명| 타입                     |설명|
+------|------------------------|----|
+contract_id | Long                   | 계약서ID |
+day | String                 | 정산날짜 |
+amount | BigDecimal(소숫점 2자리 까지) | 정산금액 |
 
 ```json
 POST /api/v1/amounts
@@ -174,12 +179,12 @@ GET api/v1/amounts/1/creators?startMonth=2022-03&endMonth=2022-04
 
 응답
 
-|필드명| 타입              |설명|
-------|-----------------|----|
-contract_id | Long            | 계약서ID |
-creators_amounts | List<<z>Object> | 크리에이터들 정산결과 |
-creators_amounts > amount | BigDecimal      | 정산 금액 |
-creators_amounts > month | String          | 정산월 |
+|필드명| 타입                     |설명|
+------|------------------------|----|
+contract_id | Long                   | 계약서ID |
+creators_amounts | List<<z>Object>        | 크리에이터들 정산결과 |
+creators_amounts > amount | BigDecimal(소숫점 7자리 까지) | 정산 금액 |
+creators_amounts > month | String                 | 정산월 |
 ```json
 {
     "contract_id": 1,
@@ -216,13 +221,13 @@ GET /api/v1/amounts/1/creators/1?startMonth=2022-03&endMonth=2022-04
 
 응답
 
-|필드명| 타입              |설명|
-------|-----------------|----|
-contract_id | Long            | 계약서ID |
-creator_id | Long            | 크리에이터 ID |
-creator_amounts | List<<z>Object> | 크리에이터 정산 결과 |
-creator_amounts > amount | BigDecimal      | 정산금액 |
-creator_amounts > month | String          | 정산월 |
+|필드명| 타입                     |설명|
+------|------------------------|----|
+contract_id | Long                   | 계약서ID |
+creator_id | Long                   | 크리에이터 ID |
+creator_amounts | List<<z>Object>        | 크리에이터 정산 결과 |
+creator_amounts > amount | BigDecimal(소숫점 7자리 까지) | 정산금액 |
+creator_amounts > month | String                 | 정산월 |
 ```json
 {
     "contract_id": 1,
@@ -258,12 +263,12 @@ GET /api/v1/amounts/1/companies?month=2022-04
 
 응답
 
-|필드명|타입|설명|
-------|-----|----|
-contract_id | Long | 계약서ID |
-month | String | 검색월 |
-total_amount | BigDecimal | 정산금액 총매출 |
-net_amount | BigDecimal | 정산금액 순매출 |
+|필드명| 타입                     |설명|
+------|------------------------|----|
+contract_id | Long                   | 계약서ID |
+month | String                 | 검색월 |
+total_amount | BigDecimal(소숫점 7자리 까지) | 정산금액 총매출 |
+net_amount | BigDecimal(소숫점 7자리 까지) | 정산금액 순매출 |
 ```json
 {
     "contract_id": 1,
