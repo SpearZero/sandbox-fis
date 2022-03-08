@@ -2,11 +2,13 @@ package sandbox.fis.api.service.channel;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sandbox.fis.api.dto.channel.EnrollChannelRequest;
 import sandbox.fis.api.dto.channel.EnrollChannelResponse;
 import sandbox.fis.api.entity.channel.Channel;
 import sandbox.fis.api.repository.channel.ChannelRepository;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class ChannelService {
