@@ -201,7 +201,7 @@ creators_amounts > month | String                 | 정산월 |
 }
 ```
 
-### 6. 정산금액 조회(채널 크레이이터 별 합계)
+### 6. 정산금액 조회(채널 크리에이터 별 합계)
 |기능|메소드|URL|
 ------|-----|----|
 정산금액 조회<br>(채널 크리에이터 별 합계) | GET | /api/v1/amounts/{contractId}/creators/<br>{creatorId}?startMonth={startMonth}&endMonth={endMonth}|
